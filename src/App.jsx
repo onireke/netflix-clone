@@ -1,6 +1,6 @@
-import { useState } from "react";
 import Navbar from "./componenets/Navbar";
 import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (
