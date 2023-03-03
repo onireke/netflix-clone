@@ -1,10 +1,10 @@
 import React from "react";
-import Main from "../componenets/HomeMain";
+import HomeMain from "../componenets/HomeMain";
 
 function Home() {
   return (
     <div>
-      <Main />
+      <HomeMain />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React from "react";
-import "../styles/componenetsStyles/Navbar.scss";
-
+import "../styles/componentsStyles/Navbar.scss";
 function Navbar() {
   return (
     <main className="navbar">

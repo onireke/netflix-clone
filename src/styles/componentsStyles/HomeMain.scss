@@ -1,0 +1,39 @@
+.home-main {
+  @apply text-white;
+}
+
+.image-wrapper {
+  @apply h-[600px] w-full;
+
+  .overly {
+    @apply absolute w-full h-[600px] bg-gradient-to-r from-black;
+  }
+
+  .info-wrapper {
+    @apply absolute top-[20%] p-4 md:p-8;
+
+    .movie-title {
+      @apply text-3xl md:text-5xl font-bold;
+    }
+
+    .buttons {
+      @apply my-4;
+
+      .play-button {
+        @apply bg-gray-300 border-gray-300 text-black py-2 px-5;
+      }
+
+      .watch-later {
+        @apply ml-4 border border-gray-300 text-white bg-black py-2 px-5;
+      }
+    }
+
+    .released-date {
+      @apply text-sm text-gray-400;
+    }
+
+    .movie-info {
+      @apply w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-300;
+    }
+  }
+}
