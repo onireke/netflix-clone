@@ -10,6 +10,14 @@
   }
 
   .overly {
-    @apply absolute top-0 left-0 w-full h-full hover:bg-black/80 text-white opacity-0;
+    @apply absolute top-0 left-0 w-full h-full hover:bg-black/80 hover:opacity-100 text-white opacity-0;
+
+    .overly-title {
+      @apply whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center;
+    }
+
+    .like {
+      @apply top-4 left-4 text-gray-300 absolute;
+    }
   }
 }
