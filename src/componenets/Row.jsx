@@ -16,7 +16,7 @@ function Row({ title, fetchURL }) {
   return (
     <>
       <h2 className="movies-title">{title}</h2>
-      <div id={"slider"}>
+      <div id={"slider"} className="row-main">
         {movies?.map((item, id) => (
           <div className="movies-list relative">
             <img
