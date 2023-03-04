@@ -1,3 +1,15 @@
-.movie-titles {
+.movies-title {
   @apply text-white font-bold p-4 md:text-xl;
+}
+
+.movies-list {
+  @apply w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2;
+
+  img {
+    @apply w-full h-auto block;
+  }
+
+  .overly {
+    @apply absolute top-0 left-0 w-full h-full hover:bg-black/80 text-white opacity-0;
+  }
 }
