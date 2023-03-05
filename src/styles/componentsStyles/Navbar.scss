@@ -1,7 +1,7 @@
 .navbar {
   @apply flex justify-between items-center p-4 absolute w-full;
   .netflix {
-    @apply absolute text-red-900 text-4xl font-bold cursor-pointer;
+    @apply text-red-900 text-4xl font-bold cursor-pointer;
   }
   .sign-in {
     @apply text-white pr-2 cursor-pointer;
