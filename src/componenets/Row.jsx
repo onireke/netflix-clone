@@ -4,7 +4,7 @@ import "../styles/componentsStyles/Row.scss";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 
-function Row({ title, fetchURL }) {
+function Row({ title, fetchURL, rowId }) {
   const [movies, setMovies] = useState([]);
   const [like, setlike] = useState(false);
 
@@ -15,13 +15,13 @@ function Row({ title, fetchURL }) {
   }, []);
 
   const slideLeft = () => {
-    let slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft - 500;
+    let slider = document.getElementById("slider" + rowId);
+    slider.scrollLeft = slider.scrollLeft - 400;
   };
 
   const slideRight = () => {
-    let slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft + 500;
+    let slider = document.getElementById("slider" + rowId);
+    slider.scrollLeft = slider.scrollLeft + 400;
   };
 
   return (
@@ -35,9 +35,9 @@ function Row({ title, fetchURL }) {
           className="absolute  bg-white rounded-full opacity-50 hover:opacity-100 z-10  cursor-pointer left-0 hidden group-hover:block"
         />
 
-        <div id={"slider"} className="row-main">
+        <div id={"slider" + rowId} className="row-main">
           {movies?.map((item, id) => (
-            <div className="movies-list relative">
+            <div key={id} className="movies-list relative">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
                 alt={item?.title}

@@ -11,6 +11,7 @@ function Home() {
       <Row title="Top Rated" fetchURL={requests.requestTopRated} />
       <Row title="Trending" fetchURL={requests.requestTrending} />
       <Row title="Up Coming" fetchURL={requests.requestUpcoming} />
+      <Row title="Latest" fetchURL={requests.requestLatest} />
     </div>
   );
 }
