@@ -13,7 +13,7 @@ function Navbar() {
           {" "}
           <button className="sign-in">Sign in</button>
         </Link>
-        <Link to="/ signup">
+        <Link to="/signup">
           {" "}
           <button className="sign-up">Sign up</button>
         </Link>

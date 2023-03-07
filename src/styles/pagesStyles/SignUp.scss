@@ -1,0 +1,7 @@
+.signup {
+  @apply w-full h-screen;
+
+  .signup img {
+    @apply hidden sm:block h-full w-full object-cover absolute;
+  }
+}
