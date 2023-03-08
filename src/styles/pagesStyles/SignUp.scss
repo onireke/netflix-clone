@@ -1,7 +1,40 @@
-.signup {
+.sign {
   @apply w-full h-screen;
+}
 
-  .signup img {
-    @apply hidden sm:block h-full w-full object-cover absolute;
+.sign-img {
+  @apply hidden sm:block h-full w-full object-cover absolute;
+}
+
+.form-container {
+  @apply max-w-[320px] mx-auto py-16;
+  .signup-word {
+    @apply text-3xl font-bold;
+  }
+
+  .form {
+    @apply w-full flex flex-col py-4;
+
+    input {
+      @apply p-3 my-2 bg-gray-700 rounded;
+    }
+
+    .button {
+      @apply font-bold rounded bg-red-600 py-3 my-6;
+    }
+    .form-bottom {
+      @apply flex justify-between text-sm text-gray-600;
+
+      input {
+        @apply mr-2;
+      }
+    }
+
+    .already-signin {
+      @apply py-8;
+      span {
+        @apply text-gray-600 mr-1;
+      }
+    }
   }
 }
