@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import "../styles/pagesStyles/SignUp.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { userAuth } from "../context/AuthContext";
+import { UserAuth } from "../context/AuthContext";
 
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { user, SignUp } = userAuth();
+  const { user, signUp } = UserAuth();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await SignUp(email, password);
+      await signUp(email, password);
+      navigate("/");
     } catch (error) {
-      console.log(erorr);
+      console.log(error);
     }
   };
   return (

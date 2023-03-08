@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  updateCurrentUser,
+  // updateCurrentUser,
 } from "firebase/auth";
 
 const AuthContext = createContext();
