@@ -4,9 +4,18 @@ import "../styles/componentsStyles/Row.scss";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 
+import { UserAuth } from "../context/AuthContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { async } from "@firebase/util";
+
 function Row({ title, fetchURL, rowId }) {
   const [movies, setMovies] = useState([]);
   const [like, setlike] = useState(false);
+  const [saved, setSaved] = useState();
+  const { user } = UserAuth();
+
+  const movieID = doc(db, "users", `${user?.email}`);
 
   useEffect(() => {
     axios.get(fetchURL).then((response) => {
@@ -22,6 +31,22 @@ function Row({ title, fetchURL, rowId }) {
   const slideRight = () => {
     let slider = document.getElementById("slider" + rowId);
     slider.scrollLeft = slider.scrollLeft + 400;
+  };
+
+  const saveShow = async () => {
+    if (user?.email) {
+      setlike(!like);
+      setSaved(true);
+      await updateDoc(movieID, {
+        savedShows: arrayUnion({
+          id: item.id,
+          title: item.title,
+          img: item.backdrop_path,
+        }),
+      });
+    } else {
+      alert("please login to save a movie");
+    }
   };
 
   return (
@@ -45,7 +70,9 @@ function Row({ title, fetchURL, rowId }) {
 
               <div className="overly absolute">
                 <p className="overly-title">{item?.title}</p>
-                <p className="like">{like ? <FaHeart /> : <FaRegHeart />}</p>
+                <p onClick={saveShow} className="like">
+                  {like ? <FaHeart /> : <FaRegHeart />}
+                </p>
               </div>
             </div>
           ))}
@@ -56,6 +83,8 @@ function Row({ title, fetchURL, rowId }) {
           className="absolute  bg-white rounded-full opacity-50 hover:opacity-100 z-10 right-0 hidden group-hover:block"
         />
       </div>
+
+      <p>cloned by abdulfatah</p>
     </>
   );
 }
