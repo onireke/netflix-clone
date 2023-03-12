@@ -85,8 +85,8 @@ function Row({ title, fetchURL, rowId }) {
       </div>
 
       <p>cloned by abdulfatah</p>
-      <p>cloned  abdulfatah</p>
-
+      <p>cloned abdulfatah</p>
+      <p>ya ALLAH come to my aid</p>
     </>
   );
 }
