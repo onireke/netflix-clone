@@ -83,10 +83,6 @@ function Row({ title, fetchURL, rowId }) {
           className="absolute  bg-white rounded-full opacity-50 hover:opacity-100 z-10 right-0 hidden group-hover:block"
         />
       </div>
-
-      <p>cloned by abdulfatah</p>
-      <p>cloned abdulfatah</p>
-      <p>ya ALLAH come to my aid</p>
     </>
   );
 }
