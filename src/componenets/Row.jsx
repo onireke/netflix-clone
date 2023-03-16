@@ -17,6 +17,16 @@ function Row({ title, fetchURL, rowId }) {
 
   const movieID = doc(db, "users", `${user?.email}`);
 
+  const slideLeft = () => {
+    let slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft - 400;
+  };
+
+  const slideRight = () => {
+    let slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft + 400;
+  };
+
   useEffect(() => {
     axios.get(fetchURL).then((response) => {
       setMovies(response.data.results);

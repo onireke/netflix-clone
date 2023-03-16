@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
+import { AiOutlineClose } from "react-icons/ai";
 import "../styles/componentsStyles/SavedShows.scss";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
@@ -21,12 +22,21 @@ function SavedShows() {
   //
 
   useEffect(() => {
-    onSnapshot(
-      doc(db, "users", `${user?.email}`, (doc) => {
-        setMovies(doc.data()?.savedShows);
-      })
-    );
+    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+      setMovies(doc.data().savedShows);
+    });
   }, [user?.email]);
+
+  const movieRef = doc(db, "users", `${user?.email}`);
+
+  const deleteShow = async (passedID) => {
+    try {
+      const result = movies.filter((item) => item.id !== passedID);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <h2 className="movies-title">My Shows</h2>
@@ -48,6 +58,12 @@ function SavedShows() {
 
               <div className="overly absolute">
                 <p className="overly-title">{item?.title}</p>
+                <p
+                  onClick={() => deleteShow(item.id)}
+                  className="absolute text-gray-300 top-4 right-4"
+                >
+                  <AiOutlineClose />
+                </p>
               </div>
             </div>
           ))}
