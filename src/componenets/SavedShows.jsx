@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import "../styles/componentsStyles/SavedShows.scss";
-import { useEffect, useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 
 function SavedShows() {
+  const [movies, setMovies] = useState([]);
   const { user } = UserAuth();
   const slideLeft = () => {
     let slider = document.getElementById("slider");
@@ -17,6 +17,16 @@ function SavedShows() {
     let slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 400;
   };
+
+  //
+
+  useEffect(() => {
+    onSnapshot(
+      doc(db, "users", `${user?.email}`, (doc) => {
+        setMovies(doc.data()?.savedShows);
+      })
+    );
+  }, [user?.email]);
   return (
     <>
       <h2 className="movies-title">My Shows</h2>
@@ -51,6 +61,5 @@ function SavedShows() {
     </>
   );
 }
-import { UserAuth } from "../context/AuthContext";
 
 export default SavedShows;

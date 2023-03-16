@@ -23,16 +23,6 @@ function Row({ title, fetchURL, rowId }) {
     });
   }, []);
 
-  const slideLeft = () => {
-    let slider = document.getElementById("slider" + rowId);
-    slider.scrollLeft = slider.scrollLeft - 400;
-  };
-
-  const slideRight = () => {
-    let slider = document.getElementById("slider" + rowId);
-    slider.scrollLeft = slider.scrollLeft + 400;
-  };
-
   const saveShow = async () => {
     if (user?.email) {
       setlike(!like);
