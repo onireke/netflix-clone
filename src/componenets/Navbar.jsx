@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/componentsStyles/Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+
 function Navbar() {
   const { user, logOut } = UserAuth();
   console.log(user);
@@ -11,7 +12,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await logOut();
-      Navigate("/");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

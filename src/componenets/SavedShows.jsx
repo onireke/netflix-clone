@@ -21,17 +21,30 @@ function SavedShows() {
 
   //
 
+  // useEffect(() => {
+  //   onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+  //     setMovies(doc.data()?.savedShows);
+  //   });
+  // }, [user?.email]);
+
   useEffect(() => {
-    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
-      setMovies(doc.data().savedShows);
-    });
-  }, [user?.email]);
+    if (user) {
+      const docRef = doc(db, "users", user.email);
+      const unsubscribe = onSnapshot(docRef, (doc) => {
+        setMovies(doc.data()?.savedShows || []);
+      });
+      return () => unsubscribe();
+    }
+  }, [db, user]);
 
   const movieRef = doc(db, "users", `${user?.email}`);
 
   const deleteShow = async (passedID) => {
     try {
       const result = movies.filter((item) => item.id !== passedID);
+      await updateDoc(movieRef, {
+        savedShows: result,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -56,11 +69,13 @@ function SavedShows() {
                 alt={item?.title}
               />
 
-              <div className="overly absolute">
-                <p className="overly-title">{item?.title}</p>
+              <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 hover:opacity-100 text-white opacity-0">
+                <p className="whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
+                  {item?.title}
+                </p>
                 <p
                   onClick={() => deleteShow(item.id)}
-                  className="absolute text-gray-300 top-4 right-4"
+                  className=" text-gray-300 top-4 right-4"
                 >
                   <AiOutlineClose />
                 </p>
