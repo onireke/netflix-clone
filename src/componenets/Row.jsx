@@ -33,7 +33,7 @@ function Row({ title, fetchURL, rowId }) {
     });
   }, []);
 
-  const saveShow = async () => {
+  const saveShow = async ({ item }) => {
     if (user?.email) {
       setlike(!like);
       setSaved(true);
